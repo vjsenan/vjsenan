@@ -1,0 +1,10 @@
+# Add filters for expense category and amount
+expense_category = st.selectbox("Select expense category", expenses["Expense Category"].unique())
+min_amount = st.number_input("Minimum amount", value=0, step=1)
+max_amount = st.number_input("Maximum amount", value=1000, step=1)
+
+# Filter and display the expenses
+filtered_expenses = expenses[(expenses["Expense Category"] == expense_category) & 
+                             (expenses["Amount"] >= min_amount) & 
+                             (expenses["Amount"] <= max_amount)]
+st.dataframe(filtered_expenses)
